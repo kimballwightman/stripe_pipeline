@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-07-10T22:06:54.340903",
+  "existing_data_counts": {
+    "customers": 2,
+    "payment_methods": 0,
+    "products": 1,
+    "prices": 2,
+    "subscriptions": 1,
+    "invoices": 1,
+    "payment_intents": 1
+  },
+  "mock_data_ids": {}
+}
