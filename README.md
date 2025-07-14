@@ -15,7 +15,7 @@ Stakeholders lack unified, timely visibility into the SaaS customer lifecycle—
 ## 🎯 Project Objectives
 - Ingest Stripe data via API into Google BigQuery
 - Orchestrate jobs with Airflow (Dockerized)
-- Transform data using dbt Cloud (star schema, SCD, marts)
+- Transform data using dbt Core (Star schema)
 - Implement robust testing, CI/CD, and observability
 - Deliver dashboards tracking core SaaS metrics
 - Simulate a realistic SaaS funnel and monetization model
@@ -28,9 +28,9 @@ Stakeholders lack unified, timely visibility into the SaaS customer lifecycle—
 | Ingestion       | Python, Stripe API, Docker         |
 | Orchestration   | Airflow (Docker)                  |
 | Data Warehouse  | Google BigQuery                   |
-| Modeling        | dbt Cloud (star schema)           |
+| Modeling        | dbt Core (Star schema)           |
 | Testing         | dbt tests, dbt-expectations       |
-| CI/CD           | GitHub Actions, dbt Cloud         |
+| CI/CD           | GitHub Actions, dbt Core         |
 | Observability   | dbt Docs, Slack alerts            |
 | Dashboarding    | Streamlit, Hex, or Metabase       |
 
@@ -106,7 +106,7 @@ Stakeholder Dashboards
 2. Configure your Stripe test account and BigQuery credentials
 3. Run the Dockerized ingestion pipeline
 4. Deploy Airflow and schedule DAGs
-5. Set up dbt Cloud and run models/tests
+5. Set up dbt Core and run models/tests
 6. Launch dashboards and explore insights
 
 ---
