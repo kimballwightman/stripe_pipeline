@@ -1,0 +1,46 @@
+[
+  {
+    "id": "cus_Sg10tDzhbQKlU0",
+    "object": "customer",
+    "address": {
+      "city": "Liverpool",
+      "country": "GB",
+      "line1": "692 Church Lane",
+      "line2": null,
+      "postal_code": "DS3 9TB",
+      "state": null
+    },
+    "balance": 0,
+    "created": 1752471042,
+    "currency": null,
+    "default_source": null,
+    "delinquent": false,
+    "description": "Customer from GB",
+    "discount": null,
+    "email": "gregory.alvarez@yahoo.com",
+    "invoice_prefix": "AO72KZ021042",
+    "invoice_settings": {
+      "custom_fields": null,
+      "default_payment_method": null,
+      "footer": null,
+      "rendering_options": null
+    },
+    "livemode": false,
+    "metadata": {
+      "country": "GB",
+      "first_name": "Gregory",
+      "last_name": "Alvarez",
+      "region": "europe",
+      "signup_date": "2021-05-26"
+    },
+    "name": "Gregory Alvarez",
+    "next_invoice_sequence": 1,
+    "phone": "+443328710672",
+    "preferred_locales": [
+      "en-GB"
+    ],
+    "shipping": null,
+    "tax_exempt": "none",
+    "test_clock": null
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "type": "subscription_created",
+    "subscription_id": "sub_xo9t7e8g8jdp0lvsnujza7tz",
+    "customer_id": "cus_Sg10tDzhbQKlU0",
+    "timestamp": 1622485380,
+    "status": "trialing",
+    "plan_key": "starter",
+    "billing_interval": "yearly",
+    "trial_start": "2021-05-31",
+    "trial_end": "2021-06-30"
+  },
+  {
+    "type": "subscription_trial_ended",
+    "subscription_id": "sub_xo9t7e8g8jdp0lvsnujza7tz",
+    "customer_id": "cus_Sg10tDzhbQKlU0",
+    "timestamp": 1625119140,
+    "status": "canceled",
+    "plan_key": "starter",
+    "billing_interval": "yearly",
+    "trial_end_date": "2021-06-30"
+  }
+]

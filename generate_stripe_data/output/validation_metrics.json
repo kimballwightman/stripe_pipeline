@@ -1,0 +1,22 @@
+{
+  "data_counts": {
+    "customers": 1,
+    "subscriptions": 1,
+    "invoices": 0,
+    "charges": 0,
+    "refunds": 0,
+    "disputes": 0,
+    "payment_methods": 1,
+    "invoice_items": 1,
+    "credit_notes": 0,
+    "tax_ids": 0
+  },
+  "trial_conversion_rate": 0.0,
+  "trial_conversion_rate_valid": false,
+  "geographic_distribution": {
+    "europe": 1.0
+  },
+  "plan_distribution": {
+    "starter": 1.0
+  }
+}

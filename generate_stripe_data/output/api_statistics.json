@@ -1,0 +1,58 @@
+{
+  "total_requests": 11,
+  "successful_requests": 11,
+  "failed_requests": 0,
+  "retried_requests": 0,
+  "success_rate": 1.0,
+  "error_rate": 0.0,
+  "retry_rate": 0.0,
+  "total_generation_time": 4.358013153076172,
+  "requests_per_second": 2.52408600286933,
+  "avg_response_time_ms": 393.0,
+  "error_breakdown": {},
+  "endpoint_stats": {
+    "/v1/products": {
+      "total_requests": 2,
+      "successful_requests": 2,
+      "failed_requests": 0,
+      "avg_response_time": 292.0
+    },
+    "/v1/prices": {
+      "total_requests": 4,
+      "successful_requests": 4,
+      "failed_requests": 0,
+      "avg_response_time": 231.0
+    },
+    "/v1/customers": {
+      "total_requests": 1,
+      "successful_requests": 1,
+      "failed_requests": 0,
+      "avg_response_time": 257.0
+    },
+    "/v1/payment_methods": {
+      "total_requests": 1,
+      "successful_requests": 1,
+      "failed_requests": 0,
+      "avg_response_time": 299.0
+    },
+    "/v1/payment_methods/pm_1RkeyMIr876AzIs42gplGRHO/attach": {
+      "total_requests": 1,
+      "successful_requests": 1,
+      "failed_requests": 0,
+      "avg_response_time": 494.0
+    },
+    "/v1/subscriptions": {
+      "total_requests": 1,
+      "successful_requests": 1,
+      "failed_requests": 0,
+      "avg_response_time": 1521.0
+    },
+    "/v1/invoice_items": {
+      "total_requests": 1,
+      "successful_requests": 1,
+      "failed_requests": 0,
+      "avg_response_time": 244.0
+    }
+  },
+  "using_real_api": true
+}
