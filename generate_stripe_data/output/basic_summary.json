@@ -1,0 +1,26 @@
+{
+  "generation_date": "2025-07-13T23:30:44.969309",
+  "total_customers": 1,
+  "total_subscriptions": 1,
+  "total_invoices": 0,
+  "total_revenue": 0.0,
+  "data_files": [
+    "customers.json",
+    "products.json",
+    "prices.json",
+    "payment_methods.json",
+    "subscriptions.json",
+    "subscription_events.json",
+    "invoices.json",
+    "invoice_items.json",
+    "charges.json",
+    "payment_intents.json",
+    "balance_transactions.json",
+    "refunds.json",
+    "disputes.json",
+    "credit_notes.json",
+    "tax_ids.json"
+  ],
+  "validation_passed": false,
+  "api_mode": "real"
+}

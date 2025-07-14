@@ -1,0 +1,50 @@
+[
+  {
+    "id": "prod_Sg10xouSW6QjDl",
+    "object": "product",
+    "active": true,
+    "attributes": [],
+    "created": 1752471040,
+    "default_price": null,
+    "description": "Perfect for small teams getting started with analytics",
+    "images": [],
+    "livemode": false,
+    "marketing_features": [],
+    "metadata": {
+      "plan_type": "starter"
+    },
+    "name": "Starter Plan",
+    "package_dimensions": null,
+    "shippable": null,
+    "statement_descriptor": null,
+    "tax_code": null,
+    "type": "service",
+    "unit_label": null,
+    "updated": 1752471040,
+    "url": null
+  },
+  {
+    "id": "prod_Sg10SSMGMlBBSo",
+    "object": "product",
+    "active": true,
+    "attributes": [],
+    "created": 1752471041,
+    "default_price": null,
+    "description": "Advanced analytics for growing businesses",
+    "images": [],
+    "livemode": false,
+    "marketing_features": [],
+    "metadata": {
+      "plan_type": "professional"
+    },
+    "name": "Professional Plan",
+    "package_dimensions": null,
+    "shippable": null,
+    "statement_descriptor": null,
+    "tax_code": null,
+    "type": "service",
+    "unit_label": null,
+    "updated": 1752471041,
+    "url": null
+  }
+]
