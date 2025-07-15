@@ -1,0 +1,7 @@
+google-cloud-bigquery>=3.4.0
+google-cloud-storage>=2.7.0
+pandas>=1.5.0
+python-dotenv>=1.0.0
+stripe>=8.0.0
+pydantic>=2.0.0
+structlog>=23.0.0 

@@ -1,0 +1,26 @@
+stripe_analytics:
+  target: "{{ env_var('DBT_TARGET', 'dev') }}"
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('DBT_PROJECT_ID') }}"
+      dataset: "{{ env_var('DBT_DATASET', 'stripe_dev') }}"
+      location: "{{ env_var('DBT_LOCATION', 'US') }}"
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      threads: "{{ env_var('DBT_THREADS', 4) | as_number }}"
+      timeout_seconds: "{{ env_var('DBT_TIMEOUT_SECONDS', 300) | as_number }}"
+      priority: interactive
+      retries: 1
+      
+    prod:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('DBT_PROJECT_ID') }}"
+      dataset: "{{ env_var('DBT_DATASET', 'stripe_prod') }}"
+      location: "{{ env_var('DBT_LOCATION', 'US') }}"
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      threads: "{{ env_var('DBT_THREADS', 8) | as_number }}"
+      timeout_seconds: "{{ env_var('DBT_TIMEOUT_SECONDS', 600) | as_number }}"
+      priority: batch
+      retries: 3 

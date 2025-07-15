@@ -1,0 +1,288 @@
+version: 2
+
+sources:
+  - name: stripe_raw
+    description: "Raw Stripe data ingested from the Stripe API"
+    database: "{{ env_var('DBT_PROJECT_ID') }}"
+    schema: "{{ env_var('DBT_DATASET', 'stripe_dev') }}"
+    
+    tables:
+      - name: customers
+        description: "Raw Stripe customer data"
+        columns:
+          - name: id
+            description: "Unique identifier for the customer"
+            tests:
+              - unique
+              - not_null
+          - name: email
+            description: "Customer's email address"
+          - name: created
+            description: "Timestamp when the customer was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: subscriptions
+        description: "Raw Stripe subscription data"
+        columns:
+          - name: id
+            description: "Unique identifier for the subscription"
+            tests:
+              - unique
+              - not_null
+          - name: customer
+            description: "ID of the customer who owns the subscription"
+            tests:
+              - not_null
+          - name: status
+            description: "Status of the subscription"
+            tests:
+              - accepted_values:
+                  values: ['incomplete', 'incomplete_expired', 'trialing', 'active', 'past_due', 'canceled', 'unpaid', 'paused']
+          - name: created
+            description: "Timestamp when the subscription was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: invoices
+        description: "Raw Stripe invoice data"
+        columns:
+          - name: id
+            description: "Unique identifier for the invoice"
+            tests:
+              - unique
+              - not_null
+          - name: customer
+            description: "ID of the customer this invoice belongs to"
+          - name: subscription
+            description: "ID of the subscription this invoice was generated for"
+          - name: status
+            description: "Status of the invoice"
+            tests:
+              - accepted_values:
+                  values: ['draft', 'open', 'paid', 'void', 'uncollectible']
+          - name: created
+            description: "Timestamp when the invoice was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: products
+        description: "Raw Stripe product data"
+        columns:
+          - name: id
+            description: "Unique identifier for the product"
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: "Name of the product"
+          - name: active
+            description: "Whether the product is currently available for purchase"
+          - name: created
+            description: "Timestamp when the product was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: prices
+        description: "Raw Stripe price data"
+        columns:
+          - name: id
+            description: "Unique identifier for the price"
+            tests:
+              - unique
+              - not_null
+          - name: product
+            description: "ID of the product this price belongs to"
+            tests:
+              - not_null
+          - name: active
+            description: "Whether the price is currently available for purchase"
+          - name: currency
+            description: "Currency for the price"
+          - name: created
+            description: "Timestamp when the price was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: payment_methods
+        description: "Raw Stripe payment method data"
+        columns:
+          - name: id
+            description: "Unique identifier for the payment method"
+            tests:
+              - unique
+              - not_null
+          - name: customer
+            description: "ID of the customer this payment method belongs to"
+          - name: type
+            description: "Type of payment method"
+            tests:
+              - accepted_values:
+                  values: ['card', 'us_bank_account', 'sepa_debit', 'ideal', 'fpx', 'giropay', 'eps', 'sofort', 'bancontact', 'p24']
+          - name: created
+            description: "Timestamp when the payment method was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: refunds
+        description: "Raw Stripe refund data"
+        columns:
+          - name: id
+            description: "Unique identifier for the refund"
+            tests:
+              - unique
+              - not_null
+          - name: charge
+            description: "ID of the charge that was refunded"
+          - name: amount
+            description: "Amount refunded in cents"
+          - name: reason
+            description: "Reason for the refund"
+          - name: created
+            description: "Timestamp when the refund was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: disputes
+        description: "Raw Stripe dispute data"
+        columns:
+          - name: id
+            description: "Unique identifier for the dispute"
+            tests:
+              - unique
+              - not_null
+          - name: charge
+            description: "ID of the charge that is disputed"
+          - name: amount
+            description: "Disputed amount in cents"
+          - name: reason
+            description: "Reason given by the cardholder for the dispute"
+          - name: status
+            description: "Current status of the dispute"
+          - name: created
+            description: "Timestamp when the dispute was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: charges
+        description: "Raw Stripe charge data"
+        columns:
+          - name: id
+            description: "Unique identifier for the charge"
+            tests:
+              - unique
+              - not_null
+          - name: customer
+            description: "ID of the customer this charge belongs to"
+          - name: amount
+            description: "Amount charged in cents"
+          - name: currency
+            description: "Currency of the charge"
+          - name: status
+            description: "Status of the charge"
+          - name: created
+            description: "Timestamp when the charge was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: customer_balance_transactions
+        description: "Raw Stripe customer balance transaction data"
+        columns:
+          - name: id
+            description: "Unique identifier for the transaction"
+            tests:
+              - unique
+              - not_null
+          - name: customer
+            description: "ID of the customer this transaction belongs to"
+          - name: amount
+            description: "Amount of the transaction in cents"
+          - name: type
+            description: "Type of transaction"
+          - name: created
+            description: "Timestamp when the transaction was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: credit_notes
+        description: "Raw Stripe credit note data"
+        columns:
+          - name: id
+            description: "Unique identifier for the credit note"
+            tests:
+              - unique
+              - not_null
+          - name: customer
+            description: "ID of the customer this credit note belongs to"
+          - name: invoice
+            description: "ID of the invoice this credit note is for"
+          - name: amount
+            description: "Amount of the credit note in cents"
+          - name: created
+            description: "Timestamp when the credit note was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: invoice_items
+        description: "Raw Stripe invoice item data"
+        columns:
+          - name: id
+            description: "Unique identifier for the invoice item"
+            tests:
+              - unique
+              - not_null
+          - name: customer
+            description: "ID of the customer this invoice item belongs to"
+          - name: invoice
+            description: "ID of the invoice this item belongs to"
+          - name: amount
+            description: "Amount of the invoice item in cents"
+          - name: created
+            description: "Timestamp when the invoice item was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null
+              
+      - name: tax_ids
+        description: "Raw Stripe tax ID data"
+        columns:
+          - name: id
+            description: "Unique identifier for the tax ID"
+            tests:
+              - unique
+              - not_null
+          - name: customer
+            description: "ID of the customer this tax ID belongs to"
+          - name: type
+            description: "Type of tax ID"
+          - name: value
+            description: "Value of the tax ID"
+          - name: created
+            description: "Timestamp when the tax ID was created"
+          - name: _ingested_at
+            description: "Timestamp when the data was ingested"
+            tests:
+              - not_null 

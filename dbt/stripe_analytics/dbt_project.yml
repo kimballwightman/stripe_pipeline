@@ -1,0 +1,113 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'stripe_analytics'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'stripe_analytics'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/
+# directory as views. These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
+models:
+  stripe_analytics:
+    # Staging models - clean and normalize raw data
+    staging:
+      +materialized: view
+      +docs:
+        node_color: "#F7931E"
+      +meta:
+        layer: "staging"
+        
+    # Intermediate models - business logic transformations
+    intermediate:
+      +materialized: view
+      +docs:
+        node_color: "#FF6B6B"
+      +meta:
+        layer: "intermediate"
+        
+    # Dimension models - slowly changing dimensions
+    dimensions:
+      +materialized: table
+      +docs:
+        node_color: "#4ECDC4"
+      +meta:
+        layer: "dimensions"
+        
+    # Fact models - event-level data
+    facts:
+      +materialized: table
+      +docs:
+        node_color: "#45B7D1"
+      +meta:
+        layer: "facts"
+        
+    # Mart models - final business metrics
+    marts:
+      +materialized: table
+      +docs:
+        node_color: "#96CEB4"
+      +meta:
+        layer: "marts"
+
+# Variables for environment-specific configuration
+vars:
+  # Date range for data processing
+  start_date: '2020-01-01'
+  end_date: '2024-12-31'
+  
+  # Business configuration
+  stripe_currency: 'usd'
+  
+  # dbt-utils configuration
+  dbt_utils_dispatch_list:
+    - dbt_utils
+
+# Seeds configuration
+seeds:
+  stripe_analytics:
+    +docs:
+      node_color: "#FFA07A"
+    +meta:
+      layer: "seeds"
+
+# Snapshots configuration
+snapshots:
+  stripe_analytics:
+    +target_schema: snapshots
+    +strategy: timestamp
+    +updated_at: _updated_at
+
+# Tests configuration
+tests:
+  +store_failures: true
+  +warn_if: ">= 1"
+  +error_if: ">= 10"
+
+# Documentation configuration
+docs:
+  stripe_analytics:
+    +docs:
+      node_color: "#DDA0DD"
